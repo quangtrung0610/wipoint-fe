@@ -1,0 +1,97 @@
+<tds-collapse
+  class="overflow-hidden relative bg-white rounded-lg dark:bg-d-neutral-3-200 bg-opacity-50 shadow"
+  expandIconPosition="right"
+  [bordered]="false"
+>
+  <span class="absolute -top-8 bg-primary-1 h-3 w-1/2 blur-xl"> </span>
+
+  <tds-collapse-panel
+    active
+    tdsClass="p-4 pt-0 "
+    [header]="headerTemplate"
+    [disabled]="false"
+    [expandedIcon]="'tdsi-chevron-up-fill'"
+  >
+    <ng-template #headerTemplate>
+      <div class="flex items-center gap-2">
+        <img
+          appSkeleton
+          [isLoading]="isLoading"
+          class="!rounded-full !h-14 aspect-square"
+          [src]="data.logoUrl ? data.logoUrl : 'assets/images/empty-state/image-default.svg'"
+          alt="company logo"
+        />
+        <div class="flex flex-col content-between">
+          <strong>{{ data.companyName || "--" }}</strong>
+          <p class="text-body-2 text-neutral-1-500 dark:text-d-neutral-1-500">Doanh nghiệp sở hữu</p>
+        </div>
+      </div>
+    </ng-template>
+
+    <div class="flex flex-col gap-2 text-neutral-1-500 dark:text-d-neutral-1-500 text-body-1">
+      <span class="flex gap-1">
+        <i class="text-lg leading-none tdsi-call-fill text-primary-1 dark:text-d-primary-1"></i>
+        <span class="block">
+          <strong class="items-center inline gap-1 pr-1"> Số điện thoại: </strong>
+          <p appSkeleton style="min-width: 10rem" class="inline" [isLoading]="isLoading">
+            {{ data.phoneNumber || "--" }}
+          </p>
+        </span>
+      </span>
+
+      <span class="flex gap-1">
+        <i class="text-lg leading-none tdsi-print-fill text-primary-1 dark:text-d-primary-1"></i>
+        <span class="block">
+          <strong class="items-center inline gap-1 pr-1"> Fax: </strong>
+          <p appSkeleton style="min-width: 10rem" class="inline" [isLoading]="isLoading">
+            {{ data.fax || "--" }}
+          </p>
+        </span>
+      </span>
+
+      <span class="flex gap-1">
+        <i class="text-lg leading-none tdsi-email-fill text-primary-1 dark:text-d-primary-1"></i>
+        <span class="block">
+          <strong class="items-center inline gap-1 pr-1"> Email: </strong>
+          <a
+            appSkeleton
+            style="min-width: 10rem"
+            class="inline"
+            [isLoading]="isLoading"
+            [href]="'mailto:' + data.email"
+          >
+            {{ data.email || "--" }}
+          </a>
+        </span>
+      </span>
+
+      <span class="flex gap-1">
+        <i class="text-lg leading-none tdsi-language-fill text-primary-1 dark:text-d-primary-1"></i>
+        <span class="block">
+          <strong class="items-center inline gap-1 pr-1"> Website: </strong>
+          <a
+            tds-link
+            appSkeleton
+            style="min-width: 10rem"
+            class="inline"
+            [isLoading]="isLoading"
+            href="https://tmtco.asia/"
+            target="_blank"
+          >
+            {{ (data.website ? "https://" + data.website : "") || "--" }}
+          </a>
+        </span>
+      </span>
+
+      <span class="flex gap-1">
+        <i class="text-lg leading-none tdsi-pin-fill text-primary-1 dark:text-d-primary-1"></i>
+        <span class="block">
+          <strong class="items-center inline gap-1 pr-1"> Địa chỉ: </strong>
+          <p appSkeleton style="min-width: 15rem" class="inline" [isLoading]="isLoading">
+            {{ data.address || "--" }}
+          </p>
+        </span>
+      </span>
+    </div>
+  </tds-collapse-panel>
+</tds-collapse>

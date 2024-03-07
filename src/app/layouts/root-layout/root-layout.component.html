@@ -1,0 +1,47 @@
+<div class="flex flex-col items-center min-h-screen overflow-auto min-w-screen">
+  <div class="max-w-[600px] w-full min-h-screen overflow-hidden relative">
+    <span class="absolute w-1/2 -top-8 bg-primary-1 h-9 blur-3xl"> </span>
+
+    <!-- <span class="absolute -bottom-[4%] left-1 bg-primary-1 h-[5%] aspect-square blur-3xl"> </span>
+    <span class="absolute -bottom-[14%] -right-[10%] bg-primary-1 h-[15%] aspect-square blur-3xl"> </span> -->
+
+    <div class="flex flex-col min-w-full min-h-full">
+      <div class="grid grid-cols-4 justify-center items-center p-4">
+        <a href="#" class="col-span-3">
+          <img class="w-2/3" src="assets/images/logos/wipoint.svg" alt="logo" />
+        </a>
+
+        <div class="grid grid-cols-1 col-span-1 gap-2">
+          <a
+            target="_blank"
+            title="Phần mềm tích điểm, quà tặng - WiPoint App Store"
+            [href]="iosAppUrl"
+          >
+            <img
+              src="assets/images/logos/appstore.svg"
+              title="Phần mềm tích điểm, quà tặng - WiPoint App Store"
+              alt="Phần mềm tích điểm, quà tặng - WiPoint App Store"
+              class="w-full"
+              loading="lazy"
+            />
+          </a>
+          <a
+            target="_blank"
+            title="Phần mềm tích điểm, quà tặng - WiPoint Play Store"
+            [href]="androidAppUrl"
+          >
+            <img
+              src="assets/images/logos/chplay.svg"
+              title="Phần mềm tích điểm, quà tặng - WiPoint Play Store"
+              alt="Phần mềm tích điểm, quà tặng - WiPoint Play Store"
+              class="w-full"
+              loading="lazy"
+            />
+          </a>
+        </div>
+      </div>
+
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

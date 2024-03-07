@@ -1,0 +1,158 @@
+<main class="relative flex flex-col gap-4">
+  <h3 class="px-4">Thông tin sản phẩm</h3>
+
+  <header class="flex items-center justify-between w-full gap-4 px-4">
+    <div class="flex flex-col w-full gap-2">
+      <h5 appSkeleton class="line-clamp-2" style="min-width: 100%" [isLoading]="isLoading">
+        {{ dataSet.productInfo.name || "--" }}
+      </h5>
+
+      <h6 class="text-primary-1 dark:text-d-primary-1">
+        {{ (dataSet.productInfo.salePrice | number : "1.0-0" : "vi_VN") + " VND" }}
+      </h6>
+
+      <div class="flex flex-col gap-2">
+        <p class="block text-neutral-1-500 dark:text-d-neutral-1-500">
+          Mã:
+          <strong appSkeleton style="min-width: 50%" [isLoading]="isLoading">
+            {{ dataSet.productInfo.code || "--" }}
+          </strong>
+        </p>
+
+        <p class="block text-neutral-1-500 dark:text-d-neutral-1-500">
+          Barcode:
+          <strong appSkeleton style="min-width: 50%" [isLoading]="isLoading">
+            {{ dataSet.productInfo.barCode || "--" }}
+          </strong>
+        </p>
+
+        <p class="block text-neutral-1-500 dark:text-d-neutral-1-500">
+          Xuất xứ:
+          <strong appSkeleton style="min-width: 50%" [isLoading]="isLoading">
+            {{ countriesDict[dataSet.productInfo.origin] || "--" }}
+          </strong>
+        </p>
+      </div>
+    </div>
+
+    <aside class="flex flex-col items-center flex-none gap-2">
+      <div class="overflow-hidden rounded-lg shadow-md h-[150px] aspect-square">
+        <div class="flex items-center justify-center select-none">
+          <img
+            appSkeleton
+            class="pointer-events-none select-none"
+            alt="product images"
+            [src]="
+              dataSet.productInfo.thumbnails.length
+                ? dataSet.productInfo.thumbnails[2]
+                : 'assets/images/empty-state/image-default.svg'
+            "
+            [isLoading]="isLoading"
+          />
+        </div>
+
+        <!-- <tds-carousel *ngIf="dataSet.productInfo.medias.length" tdsAutoPlay class="truncate">
+            <div
+              *ngFor="let data of dataSet.productInfo.medias"
+              @hidden
+              tds-carousel-content
+              class="flex items-center justify-center select-none"
+            >
+              <img
+                class="object-cover p-1 bg-white rounded-lg pointer-events-none select-none"
+                [attr.src]="data.thumbnails[3]"
+                alt="product images"
+              />
+            </div>
+          </tds-carousel> -->
+      </div>
+
+      <strong class="text-neutral-1-500 dark:text-d-neutral-1-500">{{ productId }} </strong>
+    </aside>
+  </header>
+
+  <tds-image-group class="block">
+    <app-carousel class="w-full h-56">
+      <img
+        *ngFor="let data of dataSet.productInfo.medias"
+        tds-image
+        carousel-content
+        class="object-cover w-full h-full max-w-80 rounded-lg"
+        [alt]="data.uniqueName"
+        [tdsSrc]="data.thumbnails[3]"
+      />
+    </app-carousel>
+  </tds-image-group>
+
+  <section
+    @collapse
+    *ngIf="dataSet.productInfo.status == 1 && dataSet.productInfo.pointStatus == 1"
+    class="w-full px-4"
+  >
+    <tds-card class="rounded-xl !bg-primary-3 dark:!bg-d-primary-4 w-full">
+      <tds-card-content class="!flex justify-between items-center">
+        <span class="flex items-center gap-1">
+          <img src="assets/icons/point-icon.svg" alt="icon" class="h-10" />
+          <p class="font-medium text-header-1">
+            Điểm tích lũy
+            <strong class="font-bold text-primary-1 dark:text-d-primary-1">
+              {{ "+" + dataSet.productInfo.point }}
+            </strong>
+          </p>
+        </span>
+
+        <a
+          tds-button
+          type="button"
+          class="!text-header-2 leading-none !h-fit"
+          [href]="getOS() == 1 ? iosAppUrl : androidAppUrl"
+        >
+          Tích điểm
+        </a>
+      </tds-card-content>
+    </tds-card>
+  </section>
+
+  <app-description
+    class="px-4"
+    [description]="dataSet.productInfo.descriptions"
+    [isLoading]="isLoading"
+  ></app-description>
+
+  <app-company class="px-4" [data]="dataSet.shopInfo" [isLoading]="isLoading"></app-company>
+
+  <section class="flex flex-col gap-2">
+    <header class="flex justify-between items-center px-4">
+      <h4>Sản phẩm khác</h4>
+
+      <i class="leading-none tdsi-back-fill rotate-180 text-2xl"></i>
+    </header>
+
+    <app-carousel class="h-60 flex-none relative">
+      <app-product-recommend
+        carousel-content
+        *ngFor="let data of dataSet.productRecommend"
+        class="w-52 h-60"
+        [data]="data"
+      ></app-product-recommend>
+    </app-carousel>
+  </section>
+
+  <div class="w-full aspect-[20/7] overflow-hidden">
+    <tds-carousel tdsAutoPlay class="truncate" [tdsAutoPlaySpeed]="5000">
+      <div
+        *ngFor="let data of advertisements"
+        tds-carousel-content
+        class="flex items-center justify-center select-none px-4"
+      >
+        <img
+          class="object-cover w-full h-full rounded-lg pointer-events-none select-none"
+          alt="advertisements images"
+          [attr.src]="data"
+        />
+      </div>
+    </tds-carousel>
+  </div>
+</main>
+
+<app-footer class="pt-4"></app-footer>

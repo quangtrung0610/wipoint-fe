@@ -1,0 +1,19 @@
+<tds-card class="w-full h-full !rounded-lg !border-neutral-2-50 dark:!border-transparent" [tdsBordered]="true">
+  <div class="w-full h-1/2">
+    <img
+      tds-card-image
+      class="w-full h-full object-cover"
+      [src]="data.thumbnails.length ? data.thumbnails[2] : 'assets/images/empty-state/image-default.svg'"
+      alt="avatar"
+      loading="lazy"
+    />
+  </div>
+  <tds-card-header>
+    <p class="text-body-1 line-clamp-2">{{ data.name }}</p>
+  </tds-card-header>
+  <tds-card-content class="!pt-0">
+    <strong class="text-primary-1 dark:text-d-primary-1">
+      {{ (data.salePrice | number : "1.0-0" : "vi_VN") + " VND" }}
+    </strong>
+  </tds-card-content>
+</tds-card>

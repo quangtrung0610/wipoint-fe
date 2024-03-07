@@ -1,0 +1,5 @@
+.skeleton-loading {
+  height: 100%;
+  max-width: 100%;
+  @apply inline-block animate-pulse rounded-md bg-neutral-2-50 dark:bg-d-neutral-2-100 text-transparent;
+}

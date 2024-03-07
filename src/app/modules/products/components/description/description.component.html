@@ -1,0 +1,29 @@
+<tds-collapse
+  class="overflow-hidden relative bg-white rounded-lg dark:bg-d-neutral-3-200 bg-opacity-50 shadow "
+  expandIconPosition="right"
+  [bordered]="false"
+>
+  <span class="absolute -top-8 bg-primary-1 h-3 w-1/2 blur-xl"> </span>
+  <!-- <span class="absolute -bottom-[5%] left-1 bg-primary-1 h-[5%] aspect-square blur-3xl"> </span>
+  <span class="absolute -bottom-[10%] -right-[15%] bg-primary-1 h-[10%] aspect-square blur-3xl"> </span> -->
+  <tds-collapse-panel
+    [active]="true"
+    tdsClass="p-4 pt-0 "
+    [header]="headerTemplate"
+    [disabled]="false"
+    [expandedIcon]="'tdsi-chevron-up-fill'"
+  >
+    <ng-template #headerTemplate>
+      <h4>Chi tiết</h4>
+    </ng-template>
+
+    <tds-skeleton [tdsLoading]="isLoading" [tdsParagraph]="{ rows: 6 }">
+      <div
+        @collapse
+        *ngIf="description"
+        class="block w-full text-neutral-1-600 dark:text-d-neutral-1-600 text-body-1"
+        [innerHTML]="description | tdsSanitizer : 'html'"
+      ></div>
+    </tds-skeleton>
+  </tds-collapse-panel>
+</tds-collapse>
