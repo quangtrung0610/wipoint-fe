@@ -75,10 +75,10 @@
             style="min-width: 10rem"
             class="inline"
             [isLoading]="isLoading"
-            href="https://tmtco.asia/"
+            [href]="'https://' + data.website"
             target="_blank"
           >
-            {{ (data.website ? "https://" + data.website : "") || "--" }}
+            {{ (data.website ? data.website : "") || "--" }}
           </a>
         </span>
       </span>

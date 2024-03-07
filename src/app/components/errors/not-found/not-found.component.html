@@ -1,1 +1,9 @@
-<p>not-found works!</p>
+<main class="flex flex-col gap-4 items-center justify-center px-8 w-full h-[calc(100vh-23.5rem)]">
+  <h2 class="text-center font-bold">Thật không may, chúng tôi không thể tìm thấy sản phẩm bạn đang tìm kiếm.</h2>
+
+  <p class="text-center text-xl ">
+    Bạn có biết chúng tôi cung cấp nhiều loại sản phẩm phù hợp với mọi sở thích?
+    <a tds-link class="text-xl underline" [href]="getOS() == 1 ? iosAppUrl : androidAppUrl">Nhấp vào đây</a> để xem tất
+    cả các sản phẩm có trên <strong class="text-error-500">Wi</strong> <strong class="text-primary-2">Point</strong>.
+  </p>
+</main>

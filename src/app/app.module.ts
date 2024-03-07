@@ -15,6 +15,7 @@ import { NotFoundComponent } from './components/errors/not-found/not-found.compo
 import { RootLayoutModule } from './layouts/root-layout/root-layout.module';
 import { CoreModule } from '@core/lib.module';
 import { HttpClientModule } from '@angular/common/http';
+import { TDSButtonModule } from 'tds-ui/button';
 
 // Thiết lập tiếng Việt
 registerLocaleData(localeVi);
@@ -29,6 +30,7 @@ registerLocaleData(localeVi);
     DragDropModule,
     ScrollingModule,
     HttpClientModule,
+    TDSButtonModule,
 
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),

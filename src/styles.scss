@@ -10,11 +10,20 @@
 @import "./assets/styles/skeleton";
 @import "./assets/styles/scroll";
 
+@font-face {
+  font-family: "TMT Sans Regular";
+  src: local("TMT Sans Regular"), url(./assets//fonts/common/TMTSans-Regular.ttf) format("truetype");
+}
+
+* {
+  font-family: "TMT Sans Regular", Arial, Helvetica, sans-serif;
+}
+
 html {
   @apply tds-custom-scroll;
 }
 
-body{
+body {
   @apply dark:bg-d-neutral-3-50;
 }
 
@@ -61,7 +70,7 @@ strong {
   @apply font-semibold;
 }
 
-
-header,.tds-collapse-header{
+header,
+.tds-collapse-header {
   @apply dark:text-neutral-3-50;
 }

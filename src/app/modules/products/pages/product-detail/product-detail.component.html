@@ -121,11 +121,11 @@
 
   <app-company class="px-4" [data]="dataSet.shopInfo" [isLoading]="isLoading"></app-company>
 
-  <section class="flex flex-col gap-2">
+  <section @collapse *ngIf="dataSet.productRecommend && dataSet.productRecommend.length" class="flex flex-col gap-2">
     <header class="flex justify-between items-center px-4">
       <h4>Sản phẩm khác</h4>
 
-      <i class="leading-none tdsi-back-fill rotate-180 text-2xl"></i>
+      <!-- <i class="leading-none tdsi-back-fill rotate-180 text-2xl"></i> -->
     </header>
 
     <app-carousel class="h-60 flex-none relative">
@@ -154,5 +154,3 @@
     </tds-carousel>
   </div>
 </main>
-
-<app-footer class="pt-4"></app-footer>

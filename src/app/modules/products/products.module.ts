@@ -10,7 +10,6 @@ import { CompanyComponent } from './components/company/company.component';
 import { TDSCarouselModule } from 'tds-ui/carousel';
 import { TDSPipesModule } from 'tds-ui/core/pipes';
 import { DescriptionComponent } from './components/description/description.component';
-import { FooterComponent } from './components/footer/footer.component';
 import { SkeletonModule } from '@UI/skeleton/skeleton.module';
 import { TDSSkeletonModule } from 'tds-ui/skeleton';
 import { CarouselModule } from '@UI/carousel/carousel.module';
@@ -22,7 +21,6 @@ import { ProductRecommendComponent } from './components/product-recommend/produc
     ProductDetailComponent,
     CompanyComponent,
     DescriptionComponent,
-    FooterComponent,
     ProductRecommendComponent,
   ],
   imports: [

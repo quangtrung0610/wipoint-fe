@@ -49,10 +49,8 @@ export class ProductDetailComponent implements OnInit {
         this.dataSet = res;
       },
       error: (err) => {
-        setTimeout(() => {
-          this.isLoading = false;
-        }, 3000);
-        // this.router.navigateByUrl('');
+        this.isLoading = false;
+        this.router.navigateByUrl('');
       },
       complete: () => {
         this.isLoading = false;
